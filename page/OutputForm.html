@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struk Peminjaman</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+  </head>
+  <body>
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="../asset/img/smkn8.png" alt="logo smkn8" width="50"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 py-2">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html#daftarbarang">Daftar Barang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Formulir.html">Formulir peminjaman</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kritik&Saran</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>    
+    
+    <section class="contact-section" id="contact" style="margin-top: 80px;">
+      <h2 class="text-center">Struk Peminjaman</h2>
+      
+      <div class="container">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Peminjam</th>
+                  <th>Nama Petugas</th>
+                  <th>Kelas</th>
+                  <th>Barang</th>
+                  <th>Jumlah</th>
+                  <th>Jam Peminjaman</th>
+                  <th>Tanggal Peminjaman</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="d-grid gap-2 d-md-block">
+            <button type="button" onclick="window.location.href='Formulir.html'" class="btn btn-outline-secondary">Tambahkan peminjaman</button>
+            <button type="button" onclick="window.location.href='kritik&saran.html'" class="btn btn-outline-secondary">Kasih Kritik & Saran</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <script src="../asset/js/bootstrap.bundle.js"></script>
+    <script>
+      window.onload = function () {
+        const users = JSON.parse(localStorage.getItem("users"));
+        const tableBody = document.getElementById("tableBody");
+        if (users && users.length > 0) {
+          users.forEach((user, index) => {
+            tableBody.innerHTML += `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${user.peminjam}</td>
+                <td>${user.petugas}</td>
+                <td>${user.kelas}</td>
+                <td>${user.barang}</td>
+                <td>${user.jumlah}</td>
+                <td>${user.jamPinjam}</td>
+                <td>${user.TP}</td>
+              </tr>
+            `;
+          });
+        } else {
+          tableBody.innerHTML = "<tr><td colspan='8'>Data tidak ditemukan</td></tr>";
+        }
+      };
+    </script>
+  </body>
+</html>

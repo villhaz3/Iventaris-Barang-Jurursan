@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Peminjaman</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+  </head>
+  <body>
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="../asset/img/smkn8.png" alt="logo smkn8" width="50"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0 py-2">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html#daftarbarang">Daftar Barang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Formulir peminjaman</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html#contact-us">Contact us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kritik&saran.html">Kritik&Saran</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="contact-section" id="contact" style="margin-top: 80px;">
+      <div class="container">
+        <h2 class="text-center mb-4">Data Peminjaman</h2>
+        <form action="" method="GET" class="contact-form" id="inp">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="peminjam">Nama Peminjam :</label>
+                <input type="text" id="peminjam" name="peminjam" class="form-control" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="petugas">Nama Petugas :</label>
+                <select name="petugas" id="petugas" class="form-control" required>
+                  <option value="">----</option>
+                  <option value="Petugas 1">Petugas 1</option>
+                  <option value="Petugas 2">Petugas 2</option>
+                  <option value="Petugas 3">Petugas 3</option>
+                  <option value="Petugas 4">Petugas 4</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="kelas">Kelas :</label>
+                <select name="kelas" id="kelas" class="form-control" required>
+                  <option value="">----</option>
+                  <option value="X RPL A">X RPL A</option>
+                  <option value="X RPL B">X RPL B</option>
+                  <option value="X RPL C">X RPL C</option>
+                  <option value="X RPL D">X RPL D</option>
+                  <option value="XI RPL A">XI RPL A</option>
+                  <option value="XI RPL B">XI RPL B</option>
+                  <option value="XI RPL C">XI RPL C</option>
+                  <option value="XI RPL D">XI RPL D</option>
+                  <option value="XII RPL A">XII RPL A</option>
+                  <option value="XII RPL B">XII RPL B</option>
+                  <option value="XII RPL C">XII RPL C</option>
+                  <option value="XII RPL D">XII RPL D</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="barang">Barang :</label>
+                <select name="barang" id="barang" class="form-control" required>
+                  <option value="">----</option>
+                  <option value="Proyektor">Proyektor</option>
+                  <option value="Kabel VGA">Kabel VGA</option>
+                  <option value="Kabel HDMI">Kabel HDMI</option>
+                  <option value="Kabel Rol">Kabel Rol</option>
+                  <option value="Laptop">Laptop</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="jumlah">Jumlah :</label>
+                <input type="number" id="jumlah" name="jumlah" class="form-control" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="jamPinjam">Jam Peminjaman :</label>
+                <input type="time" id="jamPinjam" name="jamPinjam" class="form-control" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="TP">Tanggal Peminjaman:</label>
+                <input type="date" id="TP" name="TP" class="form-control" required />
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addData()" class="btn btn-outline-secondary">Daftar</button>
+        </form>
+
+        <hr style="margin-top: 50px" />
+        <h2 class="text-center">Penyimpanan Data</h2>
+        <div class="table-container">
+          <div class="table-responsive">
+            <table id="dataTable" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Peminjam</th>
+                  <th>Nama Petugas</th>
+                  <th>Kelas</th>
+                  <th>Barang</th>
+                  <th>Jumlah</th>
+                  <th>Jam Peminjaman</th>
+                  <th>Tanggal Peminjaman</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+          <button type="submit" onclick="window.location.href='OutputForm.html'" class="btn btn-outline-secondary" style="margin-top: 30px;">Tampilkan Struk</button>
+          
+        </div>
+      </div>
+    </section>
+
+    <script src="../asset/js/bootstrap.bundle.js"></script>
+
+    <script>
+      window.onload = function () {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const dd = String(today.getDate()).padStart(2, "0");
+        const todayString = `${yyyy}-${mm}-${dd}`;
+        document.getElementById("TP").value = todayString;
+        displayData();
+      };
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      function addData() {
+        const peminjam = document.getElementById("peminjam").value;
+        const petugas = document.getElementById("petugas").value;
+        const kelas = document.getElementById("kelas").value;
+        const barang = document.getElementById("barang").value;
+        const jumlah = document.getElementById("jumlah").value;
+        const jamPinjam = document.getElementById("jamPinjam").value;
+        const TP = document.getElementById("TP").value;
+
+        if (peminjam && petugas && kelas && barang && jumlah && jamPinjam && TP) {
+          const newData = {
+            peminjam,
+            petugas,
+            kelas,
+            barang,
+            jumlah,
+            jamPinjam,
+            TP,
+          };
+
+          users.push(newData);
+          localStorage.setItem("users", JSON.stringify(users));
+
+          document.getElementById("inp").reset();
+          displayData();
+        } else {
+          alert("Harap isi semua data");
+        }
+      }
+
+      function displayData() {
+        const tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+        users.forEach((user, index) => {
+          tableBody.innerHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${user.peminjam}</td>
+              <td>${user.petugas}</td>
+              <td>${user.kelas}</td>
+              <td>${user.barang}</td>
+              <td>${user.jumlah}</td>
+              <td>${user.jamPinjam}</td>
+              <td>${user.TP}</td>
+              <td>
+                <button onclick="editData(${index})" class="btn btn-warning btn-sm">Edit</button>
+                <button onclick="deleteData(${index})" class="btn btn-danger btn-sm">Hapus</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
+
+      function deleteData(index) {
+        users.splice(index, 1);
+        localStorage.setItem("users", JSON.stringify(users));
+        displayData();
+      }
+
+      function editData(index) {
+        const user = users[index];
+        document.getElementById("peminjam").value = user.peminjam;
+        document.getElementById("petugas").value = user.petugas;
+        document.getElementById("kelas").value = user.kelas;
+        document.getElementById("barang").value = user.barang;
+        document.getElementById("jumlah").value = user.jumlah;
+        document.getElementById("jamPinjam").value = user.jamPinjam;
+        document.getElementById("TP").value = user.TP;
+
+        users.splice(index, 1);
+        localStorage.setItem("users", JSON.stringify(users));
+        displayData();
+      }
+    </script>
+  </body>
+</html>
